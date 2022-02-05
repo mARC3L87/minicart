@@ -1,0 +1,34 @@
+.cart-container {
+  min-width: 460px;
+  max-width: 520px;
+  width: 36%;
+  background-color: #ffffff;
+  padding: 0 10px;
+  .cart-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #dddddd;
+    .close {
+      width: 30px;
+      height: 30px;
+      position: relative;
+      margin: auto 0;
+      &::after {
+        content: '';
+        height: 30px;
+        border: 1px solid #333333;
+        position: absolute;
+        transform: rotate(45deg);
+        left: 15px;
+      }
+      &::before {
+        content: '';
+        height: 30px;
+        border: 1px solid #333333;
+        position: absolute;
+        transform: rotate(135deg);
+        left: 15px;
+      }
+    }
+  }
+}

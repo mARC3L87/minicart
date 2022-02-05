@@ -1,9 +1,11 @@
 import React from 'react';
+import Cart from '../Cart/Cart';
+import './App.scss';
 
 const App = () => {
   return (
-    <div>
-      <h1>MiniCart</h1>
+    <div className='app-container'>
+      <Cart />
     </div>
   );
 };
