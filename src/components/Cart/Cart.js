@@ -9,16 +9,18 @@ const Cart = ({ products }) => {
   return (
     <div className='cart-container'>
       <div className='cart-header'>
-        <h1>Cart (4)</h1>
+        <h1>Cart ({products.items.length})</h1>
         <div className='close'></div>
       </div>
-      {products.items.map((item) => {
-        return (
-          <div className='cart-item' key={item.id}>
-            <CartItem item={item} currency={products.currency} />
-          </div>
-        );
-      })}
+      <div className='overflow'>
+        {products.items.map((item) => {
+          return (
+            <div className='cart-item' key={item.id}>
+              <CartItem item={item} currency={products.currency} />
+            </div>
+          );
+        })}
+      </div>
       <Order currency={products.currency} shipping={products.shipping} />
     </div>
   );

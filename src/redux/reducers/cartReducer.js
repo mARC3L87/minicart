@@ -1,3 +1,10 @@
+import {
+  INCREMENT,
+  DECREMENT,
+  REMOVE_PRODUCT,
+  COUNT_TOTAL,
+} from '../actions/types';
+
 const products = {
   currency: '€',
   shipping: 15,
@@ -67,6 +74,8 @@ const products = {
       product_options: [],
     },
   ],
+  products: {},
+  total: [],
 };
 
 const initalState = products;
@@ -74,6 +83,41 @@ const initalState = products;
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = initalState, action) => {
   switch (action.type) {
+    case INCREMENT:
+      return {
+        ...state,
+        products: [
+          ...state.items,
+          state.items.map((item) =>
+            item.id === action.payload ? (item.qty += 1) : ''
+          ),
+        ],
+      };
+    case DECREMENT:
+      return {
+        ...state,
+        products: [
+          ...state.items,
+          state.items.map((item) =>
+            item.id === action.payload ? (item.qty -= 1) : ''
+          ),
+        ],
+      };
+    case REMOVE_PRODUCT:
+      return {
+        ...state,
+        items: state.items.filter((item) => item.id !== action.payload),
+      };
+    case COUNT_TOTAL:
+      return {
+        ...state,
+        total:
+          state.items
+            .map((item) => item.price.current_price * item.qty)
+            .reduce((accumulator, current) => {
+              return accumulator + current;
+            }, 0) + state.shipping,
+      };
     default:
       return state;
   }

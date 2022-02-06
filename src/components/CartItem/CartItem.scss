@@ -1,8 +1,12 @@
 .cart-item-container {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   margin: 20px;
+  flex-direction: column;
+  .col-wrapper {
+    display: flex;
+    justify-content: flex-start;
+  }
   .col-1 {
     width: 100px;
     height: 75px;
@@ -12,45 +16,18 @@
       height: 100%;
     }
   }
-  .col-wrapper {
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-  }
   .col-2 {
     display: flex;
     flex-direction: column;
+    margin: 0 0 0 20px;
+    flex: 1;
     .name-container {
-      display: flex;
-      justify-content: space-between;
       p {
         margin: 0;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 22px;
         font-weight: normal;
         color: #333333;
-      }
-      .close-small {
-        width: 14px;
-        height: 14px;
-        position: relative;
-        cursor: pointer;
-        &::after {
-          content: '';
-          height: 14px;
-          border: 1px solid #333333;
-          position: absolute;
-          transform: rotate(45deg);
-          left: 7px;
-        }
-        &::before {
-          content: '';
-          height: 14px;
-          border: 1px solid #333333;
-          position: absolute;
-          transform: rotate(135deg);
-          left: 7px;
-        }
       }
     }
     .options-container {
@@ -71,15 +48,40 @@
       }
     }
   }
+  .close-small {
+    width: 14px;
+    height: 14px;
+    position: relative;
+    cursor: pointer;
+    &::after {
+      content: '';
+      height: 14px;
+      width: 2px;
+      background-color: #333333;
+      position: absolute;
+      transform: rotate(45deg);
+      left: 7px;
+    }
+    &::before {
+      content: '';
+      height: 14px;
+      width: 2px;
+      background-color: #333333;
+      position: absolute;
+      transform: rotate(135deg);
+      left: 7px;
+    }
+  }
   .col-3 {
     display: flex;
     justify-content: space-between;
     width: 100%;
     align-items: flex-end;
-    margin: 0 0 30px;
+    margin: 20px 0 30px 0;
     .qty-container {
       display: flex;
       height: 30px;
+
       p {
         margin: 7px 10px 0 0;
         color: #333333;
@@ -95,6 +97,9 @@
         font-size: 22px;
         outline: none;
         border: none;
+        &:hover {
+          background-color: #dddddd;
+        }
       }
       .btn-minus {
         border-top-left-radius: 4px;
@@ -116,10 +121,10 @@
     }
     .price {
       display: flex;
-      flex-direction: column;
+
       justify-content: flex-end;
       p {
-        margin: 5px 0 0 0;
+        margin: 5px 0 0 10px;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 22px;
         font-weight: bold;
@@ -130,5 +135,13 @@
         text-decoration: line-through;
       }
     }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .qty-container {
+    margin: 0 0 0 120px;
+  }
+  .price {
+    flex-direction: column;
   }
 }
