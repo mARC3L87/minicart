@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import CartItem from '../CartItem/CartItem';
 import Order from '../Order/Order';
 import { connect } from 'react-redux';
 import './Cart.scss';
 
-const Cart = ({ products }) => {
+const Cart = ({ products, openSet }) => {
   console.log(products);
+  // console.log(openSet);
+  const [open, setOpen] = useState();
+  const ref = useRef();
+  const onClick = (e) => {
+    if (ref.current.classList.contains('close')) {
+      setOpen(!open);
+    }
+  };
   return (
-    <div className='cart-container'>
+    <div className={`cart-container ${open ? 'slideActive' : ''}`}>
       <div className='cart-header'>
         <h1>Cart ({products.items.length})</h1>
-        <div className='close'></div>
+        <div ref={ref} onClick={() => onClick()} className='close'></div>
       </div>
       <div className='overflow'>
         {products.items.map((item) => {
@@ -28,5 +36,6 @@ const Cart = ({ products }) => {
 
 const mapStateToProps = (state) => ({
   products: state.products,
+  openSet: state.open,
 });
 export default connect(mapStateToProps)(Cart);

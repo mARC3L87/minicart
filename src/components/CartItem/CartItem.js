@@ -42,10 +42,11 @@ const CartItem = ({
   };
 
   const handleChange = (e) => {
-    if (e.target.value === isNaN || e.target.value > 10 || e.target.value < 1) {
-      return;
+    const re = /\b([1-9]|10)\b/;
+    if (re.test(e.target.value) || e.target.value === '') {
+      countTotal();
+      setCount(e.target.value);
     }
-    setCount(e.target.value);
   };
 
   const deleteProduct = () => {

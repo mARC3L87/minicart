@@ -49,6 +49,11 @@
     border-bottom: 1px solid #dddddd;
   }
 }
+.slideActive {
+  position: absolute;
+  transform: translateY(-100%);
+  transition: ease-in-out 1s;
+}
 
 @media screen and (min-width: 1024px) {
   .cart-container {
