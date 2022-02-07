@@ -1,20 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { openTrue } from '../../redux/actions/openActions';
+import './Button.scss';
 
-const Button = ({ openTrue, openState }) => {
-  console.log(openState);
-  // const openClick = () => {
-  //   openTrue();
-  //   console.log('open');
-  // };
+const Button = ({ openTrue, openSt }) => {
   return (
     <div>
-      <button onClick={() => openTrue()}>Click</button>
+      <button className='btn-click' onClick={() => openTrue()}>
+        Click
+      </button>
     </div>
   );
 };
 const mapStateToProps = (state) => ({
-  openState: state.open,
+  openSt: state.open,
 });
 export default connect(mapStateToProps, { openTrue })(Button);

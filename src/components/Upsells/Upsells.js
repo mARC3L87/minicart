@@ -11,7 +11,6 @@ const Upsells = ({ upsells, fetchUpsells }) => {
   useEffect(() => {
     fetchUpsells();
   }, [fetchUpsells]);
-  console.log(upsells);
   return (
     <div className='upsell-container'>
       <h1>Recommended Products:</h1>

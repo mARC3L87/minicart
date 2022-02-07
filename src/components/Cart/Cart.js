@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import CartItem from '../CartItem/CartItem';
 import Upsells from '../Upsells/Upsells';
 import Order from '../Order/Order';
@@ -6,9 +6,10 @@ import { connect } from 'react-redux';
 import './Cart.scss';
 
 const Cart = ({ products, openSet }) => {
-  console.log(products);
-  // console.log(openSet);
-  const [open, setOpen] = useState();
+  useEffect(() => {
+    setOpen(openSet);
+  }, [openSet]);
+  const [open, setOpen] = useState(openSet);
   const ref = useRef();
   const onClick = (e) => {
     if (ref.current.classList.contains('close')) {
@@ -16,7 +17,7 @@ const Cart = ({ products, openSet }) => {
     }
   };
   return (
-    <div className={`cart-container ${open ? 'slideActive' : ''}`}>
+    <div className={`cart-container ${!open ? 'slideOut' : 'slideIn'}`}>
       <div className='cart-header'>
         <h1>Cart ({products.items.length})</h1>
         <div ref={ref} onClick={() => onClick()} className='close'></div>

@@ -10,7 +10,7 @@ export default (state = initialState, action) => {
     case SET_OPEN:
       return {
         ...state,
-        openSt: true,
+        openSt: !state.openSt,
       };
     default:
       return state;

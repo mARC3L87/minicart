@@ -49,9 +49,13 @@
     border-bottom: 1px solid #dddddd;
   }
 }
-.slideActive {
+.slideOut {
   position: absolute;
   transform: translateY(-100%);
+  transition: ease-in-out 1s;
+}
+.slideIn {
+  transform: translateY(0);
   transition: ease-in-out 1s;
 }
 
