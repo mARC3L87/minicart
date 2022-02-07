@@ -1,16 +1,16 @@
-import { SET_OPEN } from '../actions/types';
+import { FETCH_UPSELL } from '../actions/types';
 
 const initialState = {
-  openSt: false,
+  upsells: [],
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = initialState, action) => {
   switch (action.type) {
-    case SET_OPEN:
+    case FETCH_UPSELL:
       return {
         ...state,
-        openSt: true,
+        upsells: action.payload,
       };
     default:
       return state;

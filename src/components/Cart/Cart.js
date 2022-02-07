@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import CartItem from '../CartItem/CartItem';
+import Upsells from '../Upsells/Upsells';
 import Order from '../Order/Order';
 import { connect } from 'react-redux';
 import './Cart.scss';
@@ -28,6 +29,7 @@ const Cart = ({ products, openSet }) => {
             </div>
           );
         })}
+        <Upsells />
       </div>
       <Order currency={products.currency} shipping={products.shipping} />
     </div>
